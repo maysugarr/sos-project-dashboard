@@ -262,7 +262,7 @@
   <h1>R&amp;D Project &amp; POC Portfolio</h1>
   <p>First-Principle Models integrated with AI / ML / GenAI / Agentic AI for Chemical Process Manufacturing. Filter by category and technique to match projects with your team's skills.</p>
   <div class="kpi-row">
-    <div class="kpi-card"><div class="kpi-value">11</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 6 domains</div></div>
+    <div class="kpi-card"><div class="kpi-value">13</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 6 domains</div></div>
     <div class="kpi-card"><div class="kpi-value">3</div><div class="kpi-label">Quick POC Wins</div><div class="kpi-sub">3–4 month delivery</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#7ecb9e;">5–30%</div><div class="kpi-label">Avg. Cost Saving</div><div class="kpi-sub">Per project category</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#ffb74d;">$M+</div><div class="kpi-label">Proven ROI</div><div class="kpi-sub">Industry validated</div></div>
@@ -543,6 +543,39 @@ const PROJECTS = [
     benefits:["50–70% reduction in scale-up engineering man-hours","Automated first-pass PFD generation for new process routes","Bridges synthesis gap between lab discovery and industrial production","Reduces scale-up timeline from years to months","Supports new product development pipeline for specialty chemicals"],
     techStack:["Python","LangChain","GPT-4 Vision","Aspen Plus API","Scale-up Library","AutoCAD Integration"],
     refs:[["AutoChemSchematic AI – arXiv 2025","https://arxiv.org/abs/2505.24584"],["Hybrid Modelling in Industry 4.0/5.0 – Frontiers","https://www.frontiersin.org/journals/chemical-engineering/articles/10.3389/fceng.2024.1494244/full"],["Generative AI in Chemical Market 2025","https://www.insightaceanalytic.com/report/generative-ai-in-chemical-market/3129"]]
+  },
+  {
+    id:"12", title:"Closed-Loop Agentic AI on Digital Twin for Autonomous Process Optimization",
+    category:"Digital Twin", catKey:"Digital Twin", complexity:"High", pocMonths:"5–7 mo.", valueImpact:"Very High",
+    techniques:["First Principle","Digital Twin","AI Agent","GenAI / LLM","Reinforcement Learning"],
+    teamSkills:[
+      {tech:"Digital Twin",desc:"Real-time process twin synced with DCS/PI; surrogate models calibrated to live measurements",level:"Must"},
+      {tech:"AI Agent",desc:"Multi-agent orchestration: what-if scenario agent, setpoint advisor agent, KPI monitor agent",level:"Must"},
+      {tech:"First Principle",desc:"Mass/energy balance and reactor kinetics underpin scenario evaluation in the twin",level:"Must"},
+      {tech:"GenAI / LLM",desc:"LLM reasoning over scenario results, natural-language operator handoff, root-cause narratives",level:"Good"},
+      {tech:"Reinforcement Learning",desc:"Closed-loop RL fine-tuning of setpoint recommendations once human trust is established",level:"Nice"},
+    ],
+    background:"Chemical plants run digital twins in advisory mode, but operators still manually translate twin insights into setpoint changes. Major producers (BASF, Bayer, Celanese) are now deploying agentic AI that actively interrogates the twin, runs what-if scenarios, and proactively flags optimization opportunities — moving from human-in-the-loop to closed-loop optimization.",
+    solution:"Build an agentic AI layer on top of an existing first-principle digital twin. Multiple AI agents collaborate: a scenario agent that runs Monte-Carlo what-ifs against the twin, an advisor agent that proposes setpoint moves to maximize yield/energy KPIs under safety constraints, and a narrator agent that explains the recommended action in plain language. Closed-loop RL fine-tunes recommendations once shadow-mode validation builds operator trust.",
+    benefits:["20% reduction in unplanned downtime (industry benchmark — Celanese JO.AI / Kongsberg)","5–10% additional yield and energy improvement vs static APC","Compresses operator response time from minutes to seconds for upset detection","Captures tacit operator knowledge as agent policies for shift continuity","Bridges digital twin investment to measurable EBITDA contribution"],
+    techStack:["Python","LangGraph","Aspen HYSYS / DynSim Twin","OSIsoft PI","Ray RLlib","Claude / GPT-4o","Kafka Streams"],
+    refs:[["Chemical Industry to Bet on Agentic AI – C&EN","https://cen.acs.org/physical-chemistry/computational-chemistry/Chemical-industry-bet-agentic-AI/104/web/2026/01"],["Agentic AI Meets Digital Twins – Kongsberg Digital","https://kongsbergdigital.com/blog/the-new-intelligence-layer-transforming-the-chemical-industry-agentic-ai-meets-digital-twins"],["Autonomous Industrial Control with LLM Agents – arXiv","https://arxiv.org/pdf/2411.05904"]]
+  },
+  {
+    id:"13", title:"Hierarchical RL for Auto-Generation of Mechanistic Digital Twin Models",
+    category:"R&D / Scale-Up", catKey:"R&D", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"High",
+    techniques:["First Principle","Reinforcement Learning","Digital Twin","Machine Learning"],
+    teamSkills:[
+      {tech:"First Principle",desc:"Library of canonical unit-operation models (CSTR, PFR, distillation, heat exchanger, compartments)",level:"Must"},
+      {tech:"Reinforcement Learning",desc:"Hierarchical RL agents that search the model space and recalibrate compartments against plant data",level:"Must"},
+      {tech:"Digital Twin",desc:"Twin shell that ingests auto-generated mechanistic structures and exposes them to APC and operators",level:"Must"},
+      {tech:"Machine Learning",desc:"Residual ML layer to capture phenomena the auto-generated mechanistic model misses",level:"Good"},
+    ],
+    background:"Building a mechanistic digital twin for each new unit takes 6–18 months of expert engineering. As process configurations evolve, twin models drift and require manual recalibration. New 2025 research demonstrates RL agents that automatically synthesize and recalibrate compartmentalized mechanistic models from plant data, reducing the engineering bottleneck and enabling twin-at-scale.",
+    solution:"Develop a meta-tool that uses hierarchical reinforcement learning agents to compose mechanistic twin models from a library of unit-operation primitives, then automatically recalibrate compartments against live PI data. A residual ML layer captures unmodeled physics. The tool outputs a deployment-ready twin model that operators and APC can consume — turning twin development from a custom engineering project into a configurable pipeline reusable across the SCG asset base.",
+    benefits:["60–80% reduction in time-to-deploy a new mechanistic digital twin","Automated re-tuning of compartment parameters as the process drifts","Reusable across reactor, distillation, and heat-exchanger families","Lowers the barrier to deploying twins on smaller assets that previously could not justify the engineering cost","Foundation for a twin-as-a-service offering across the SOS portfolio"],
+    techStack:["Python","Ray RLlib","gPROMS / Aspen Custom Modeler","SciPy","PyTorch","OSIsoft PI"],
+    refs:[["Automated Mechanistic Model Generation for Twins (Part II) – ScienceDirect 2025","https://www.sciencedirect.com/science/article/pii/S0098135425003874"],["Digital Twin Calibration with Model-Based RL – arXiv","https://arxiv.org/pdf/2501.02205"],["DRL-Based Digital Twin for Manufacturing Optimization – MDPI","https://www.mdpi.com/2079-8954/12/2/38"]]
   }
 ];
 
