@@ -1,0 +1,17 @@
+# Word documents and office files
+*.docx
+*.xlsx
+*.pptx
+
+# Skill packages
+*.skill
+
+# Claude internal folder
+.claude/
+
+# macOS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
