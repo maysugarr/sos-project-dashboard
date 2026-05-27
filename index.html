@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SOS Project Research</title>
+<title>SOS — AI Project Portfolio Dashboard</title>
 <style>
   :root {
     --blue-dark: #1F4E79;
@@ -64,26 +64,6 @@
   }
   .label-cat  { background: var(--blue-dark); }
   .label-tech { background: #5B4A9F; }
-  .label-week { background: #00695C; }
-
-  /* Week filter buttons */
-  .week-filter-btn {
-    border: 1.5px solid #00695C; color: #00695C; background: #E0F2F1;
-    border-radius: 20px; padding: 4px 13px; font-size: 11.5px; font-weight: 700;
-    cursor: pointer; transition: all 0.16s; white-space: nowrap;
-  }
-  .week-filter-btn:hover { background: #B2DFDB; }
-  .week-filter-btn.active-week { background: #00695C; color: #fff; }
-
-  /* NEW badge on cards */
-  .new-badge {
-    display: inline-block; background: #C55A11; color: #fff;
-    font-size: 9px; font-weight: 800; padding: 2px 7px; border-radius: 10px;
-    letter-spacing: 0.5px; vertical-align: middle; margin-left: 6px;
-    animation: newPop 0.4s ease;
-  }
-  @keyframes newPop { from { transform:scale(0.6); opacity:0; } to { transform:scale(1); opacity:1; } }
-  .week-date-pill { background: #E0F2F1; color: #00695C; font-size: 9.5px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
   .search-box {
     display: flex; align-items: center; gap: 8px;
     background: var(--gray-bg); border: 1.5px solid var(--gray-border);
@@ -279,10 +259,10 @@
 
 <!-- HERO -->
 <div class="hero">
-  <h1>SOS Project Research</h1>
-  <p>First-Principle Models integrated with AI / ML / GenAI / Agentic AI for Chemical Process Manufacturing. Filter by category, technique, or week to track new research and match projects with your team's skills.</p>
+  <h1>R&amp;D Project &amp; POC Portfolio</h1>
+  <p>First-Principle Models integrated with AI / ML / GenAI / Agentic AI for Chemical Process Manufacturing. Filter by category and technique to match projects with your team's skills.</p>
   <div class="kpi-row">
-    <div class="kpi-card"><div class="kpi-value">11</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 6 domains</div></div>
+    <div class="kpi-card"><div class="kpi-value">15</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 7 domains</div></div>
     <div class="kpi-card"><div class="kpi-value">3</div><div class="kpi-label">Quick POC Wins</div><div class="kpi-sub">3–4 month delivery</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#7ecb9e;">5–30%</div><div class="kpi-label">Avg. Cost Saving</div><div class="kpi-sub">Per project category</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#ffb74d;">$M+</div><div class="kpi-label">Proven ROI</div><div class="kpi-sub">Industry validated</div></div>
@@ -329,13 +309,6 @@
       <button class="tech-filter-btn tf-llm"   onclick="toggleTechFilter('GenAI / LLM',this)"><span class="tfi">💬</span>GenAI / LLM</button>
       <button class="tech-filter-btn tf-agent" onclick="toggleTechFilter('AI Agent',this)"><span class="tfi">🦾</span>AI Agent</button>
       <button class="tech-filter-btn tf-dt"    onclick="toggleTechFilter('Digital Twin',this)"><span class="tfi">🪞</span>Digital Twin</button>
-    </div>
-  </div>
-  <!-- Row 3: Week date filter -->
-  <div class="controls-row">
-    <span class="filter-group-label label-week">📅 Week Added</span>
-    <div class="filter-row" id="weekFilterBtns">
-      <button class="week-filter-btn active-week" onclick="setWeekFilter('all',this)">All (2 months)</button>
     </div>
   </div>
 </div>
@@ -405,7 +378,6 @@ const TECH_META = {
 const PROJECTS = [
   {
     id:"01", title:"Hybrid Soft Sensor for Real-Time Quality Prediction",
-    dateAdded:"2026-03-28",
     category:"Quality / Control", catKey:"Quality", complexity:"Medium", pocMonths:"3–4 mo.", valueImpact:"High",
     techniques:["First Principle","Machine Learning","Deep Learning"],
     teamSkills:[
@@ -421,7 +393,6 @@ const PROJECTS = [
   },
   {
     id:"02", title:"AI-Enhanced Advanced Process Control (APC) with First-Principle MPC",
-    dateAdded:"2026-03-28",
     category:"Process Control", catKey:"Process Control", complexity:"High", pocMonths:"6–9 mo.", valueImpact:"Very High",
     techniques:["First Principle","Machine Learning","Reinforcement Learning"],
     teamSkills:[
@@ -437,7 +408,6 @@ const PROJECTS = [
   },
   {
     id:"03", title:"Physics-AI Digital Twin for Process Simulation & Optimization",
-    dateAdded:"2026-03-28",
     category:"Digital Twin", catKey:"Digital Twin", complexity:"High", pocMonths:"6–12 mo.", valueImpact:"Very High",
     techniques:["First Principle","Machine Learning","Optimization","Digital Twin"],
     teamSkills:[
@@ -454,7 +424,6 @@ const PROJECTS = [
   },
   {
     id:"04", title:"Predictive Maintenance & AI Anomaly Detection for Rotating Equipment",
-    dateAdded:"2026-03-28",
     category:"Asset Reliability", catKey:"Asset Reliability", complexity:"Medium", pocMonths:"3–5 mo.", valueImpact:"High",
     techniques:["Machine Learning","Deep Learning"],
     teamSkills:[
@@ -470,7 +439,6 @@ const PROJECTS = [
   },
   {
     id:"05", title:"Energy Optimization & Heat Integration AI Agent",
-    dateAdded:"2026-03-28",
     category:"Energy / ESG", catKey:"Energy", complexity:"Medium", pocMonths:"3–6 mo.", valueImpact:"High",
     techniques:["First Principle","Reinforcement Learning","Optimization"],
     teamSkills:[
@@ -486,7 +454,6 @@ const PROJECTS = [
   },
   {
     id:"06", title:"Hybrid Model for Catalytic Reactor Optimization (FCC / Steam Cracker)",
-    dateAdded:"2026-03-28",
     category:"Reaction Engineering", catKey:"Reaction", complexity:"High", pocMonths:"6–9 mo.", valueImpact:"Very High",
     techniques:["First Principle","Deep Learning","Optimization"],
     teamSkills:[
@@ -502,7 +469,6 @@ const PROJECTS = [
   },
   {
     id:"07", title:"Analyzer-Less Fuel Blending Optimization with Hybrid AI Model",
-    dateAdded:"2026-03-28",
     category:"Blending / Quality", catKey:"Quality", complexity:"Medium", pocMonths:"3–4 mo.", valueImpact:"High",
     techniques:["First Principle","Machine Learning","Optimization"],
     teamSkills:[
@@ -518,7 +484,6 @@ const PROJECTS = [
   },
   {
     id:"08", title:"AI-Assisted HAZOP & Process Safety Intelligence",
-    dateAdded:"2026-03-28",
     category:"Process Safety", catKey:"Safety", complexity:"Medium", pocMonths:"2–4 mo.", valueImpact:"Medium",
     techniques:["Machine Learning","GenAI / LLM","AI Agent"],
     teamSkills:[
@@ -534,7 +499,6 @@ const PROJECTS = [
   },
   {
     id:"09", title:"Agentic AI Process Copilot for Operator Decision Support",
-    dateAdded:"2026-03-28",
     category:"Operations / GenAI", catKey:"Operations", complexity:"Medium", pocMonths:"2–4 mo.", valueImpact:"High",
     techniques:["GenAI / LLM","AI Agent"],
     teamSkills:[
@@ -550,7 +514,6 @@ const PROJECTS = [
   },
   {
     id:"10", title:"AI-Driven Supply Chain & Production Planning Optimization",
-    dateAdded:"2026-03-28",
     category:"Supply Chain", catKey:"Supply Chain", complexity:"Medium", pocMonths:"3–5 mo.", valueImpact:"High",
     techniques:["Machine Learning","Deep Learning","Optimization","GenAI / LLM","AI Agent"],
     teamSkills:[
@@ -567,7 +530,6 @@ const PROJECTS = [
   },
   {
     id:"11", title:"Generative AI for Accelerated Chemical Process Scale-Up & PFD Generation",
-    dateAdded:"2026-03-28",
     category:"R&D / Scale-Up", catKey:"R&D", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"Medium",
     techniques:["First Principle","GenAI / LLM","AI Agent","Optimization"],
     teamSkills:[
@@ -581,6 +543,71 @@ const PROJECTS = [
     benefits:["50–70% reduction in scale-up engineering man-hours","Automated first-pass PFD generation for new process routes","Bridges synthesis gap between lab discovery and industrial production","Reduces scale-up timeline from years to months","Supports new product development pipeline for specialty chemicals"],
     techStack:["Python","LangChain","GPT-4 Vision","Aspen Plus API","Scale-up Library","AutoCAD Integration"],
     refs:[["AutoChemSchematic AI – arXiv 2025","https://arxiv.org/abs/2505.24584"],["Hybrid Modelling in Industry 4.0/5.0 – Frontiers","https://www.frontiersin.org/journals/chemical-engineering/articles/10.3389/fceng.2024.1494244/full"],["Generative AI in Chemical Market 2025","https://www.insightaceanalytic.com/report/generative-ai-in-chemical-market/3129"]]
+  },
+  {
+    id:"12", title:"Closed-Loop Agentic AI on Digital Twin for Autonomous Process Optimization",
+    category:"Digital Twin", catKey:"Digital Twin", complexity:"High", pocMonths:"5–7 mo.", valueImpact:"Very High",
+    techniques:["First Principle","Digital Twin","AI Agent","GenAI / LLM","Reinforcement Learning"],
+    teamSkills:[
+      {tech:"Digital Twin",desc:"Real-time process twin synced with DCS/PI; surrogate models calibrated to live measurements",level:"Must"},
+      {tech:"AI Agent",desc:"Multi-agent orchestration: what-if scenario agent, setpoint advisor agent, KPI monitor agent",level:"Must"},
+      {tech:"First Principle",desc:"Mass/energy balance and reactor kinetics underpin scenario evaluation in the twin",level:"Must"},
+      {tech:"GenAI / LLM",desc:"LLM reasoning over scenario results, natural-language operator handoff, root-cause narratives",level:"Good"},
+      {tech:"Reinforcement Learning",desc:"Closed-loop RL fine-tuning of setpoint recommendations once human trust is established",level:"Nice"},
+    ],
+    background:"Chemical plants run digital twins in advisory mode, but operators still manually translate twin insights into setpoint changes. Major producers (BASF, Bayer, Celanese) are now deploying agentic AI that actively interrogates the twin, runs what-if scenarios, and proactively flags optimization opportunities — moving from human-in-the-loop to closed-loop optimization.",
+    solution:"Build an agentic AI layer on top of an existing first-principle digital twin. Multiple AI agents collaborate: a scenario agent that runs Monte-Carlo what-ifs against the twin, an advisor agent that proposes setpoint moves to maximize yield/energy KPIs under safety constraints, and a narrator agent that explains the recommended action in plain language. Closed-loop RL fine-tunes recommendations once shadow-mode validation builds operator trust.",
+    benefits:["20% reduction in unplanned downtime (industry benchmark — Celanese JO.AI / Kongsberg)","5–10% additional yield and energy improvement vs static APC","Compresses operator response time from minutes to seconds for upset detection","Captures tacit operator knowledge as agent policies for shift continuity","Bridges digital twin investment to measurable EBITDA contribution"],
+    techStack:["Python","LangGraph","Aspen HYSYS / DynSim Twin","OSIsoft PI","Ray RLlib","Claude / GPT-4o","Kafka Streams"],
+    refs:[["Chemical Industry to Bet on Agentic AI – C&EN","https://cen.acs.org/physical-chemistry/computational-chemistry/Chemical-industry-bet-agentic-AI/104/web/2026/01"],["Agentic AI Meets Digital Twins – Kongsberg Digital","https://kongsbergdigital.com/blog/the-new-intelligence-layer-transforming-the-chemical-industry-agentic-ai-meets-digital-twins"],["Autonomous Industrial Control with LLM Agents – arXiv","https://arxiv.org/pdf/2411.05904"]]
+  },
+  {
+    id:"13", title:"Hierarchical RL for Auto-Generation of Mechanistic Digital Twin Models",
+    category:"R&D / Scale-Up", catKey:"R&D", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"High",
+    techniques:["First Principle","Reinforcement Learning","Digital Twin","Machine Learning"],
+    teamSkills:[
+      {tech:"First Principle",desc:"Library of canonical unit-operation models (CSTR, PFR, distillation, heat exchanger, compartments)",level:"Must"},
+      {tech:"Reinforcement Learning",desc:"Hierarchical RL agents that search the model space and recalibrate compartments against plant data",level:"Must"},
+      {tech:"Digital Twin",desc:"Twin shell that ingests auto-generated mechanistic structures and exposes them to APC and operators",level:"Must"},
+      {tech:"Machine Learning",desc:"Residual ML layer to capture phenomena the auto-generated mechanistic model misses",level:"Good"},
+    ],
+    background:"Building a mechanistic digital twin for each new unit takes 6–18 months of expert engineering. As process configurations evolve, twin models drift and require manual recalibration. New 2025 research demonstrates RL agents that automatically synthesize and recalibrate compartmentalized mechanistic models from plant data, reducing the engineering bottleneck and enabling twin-at-scale.",
+    solution:"Develop a meta-tool that uses hierarchical reinforcement learning agents to compose mechanistic twin models from a library of unit-operation primitives, then automatically recalibrate compartments against live PI data. A residual ML layer captures unmodeled physics. The tool outputs a deployment-ready twin model that operators and APC can consume — turning twin development from a custom engineering project into a configurable pipeline reusable across the SCG asset base.",
+    benefits:["60–80% reduction in time-to-deploy a new mechanistic digital twin","Automated re-tuning of compartment parameters as the process drifts","Reusable across reactor, distillation, and heat-exchanger families","Lowers the barrier to deploying twins on smaller assets that previously could not justify the engineering cost","Foundation for a twin-as-a-service offering across the SOS portfolio"],
+    techStack:["Python","Ray RLlib","gPROMS / Aspen Custom Modeler","SciPy","PyTorch","OSIsoft PI"],
+    refs:[["Automated Mechanistic Model Generation for Twins (Part II) – ScienceDirect 2025","https://www.sciencedirect.com/science/article/pii/S0098135425003874"],["Digital Twin Calibration with Model-Based RL – arXiv","https://arxiv.org/pdf/2501.02205"],["DRL-Based Digital Twin for Manufacturing Optimization – MDPI","https://www.mdpi.com/2079-8954/12/2/38"]]
+  },
+  {
+    id:"14", title:"Multi-Agent LLM Framework for Collaborative Process Engineering & Design",
+    category:"R&D / Scale-Up", catKey:"R&D", complexity:"High", pocMonths:"5–7 mo.", valueImpact:"High",
+    techniques:["GenAI / LLM","AI Agent","First Principle","Optimization"],
+    teamSkills:[
+      {tech:"GenAI / LLM",desc:"Specialist LLM agents per discipline (mass balance, kinetics, equipment sizing, economics, safety, documentation) coordinated through a shared blackboard",level:"Must"},
+      {tech:"AI Agent",desc:"Multi-agent orchestration (LangGraph / CrewAI) with structured message passing, tool calling, and human-in-the-loop review checkpoints",level:"Must"},
+      {tech:"First Principle",desc:"Process simulators (Aspen HYSYS / DWSIM / Pyomo) exposed as tools so every agent answer is grounded in physics, not LLM hallucination",level:"Must"},
+      {tech:"Optimization",desc:"Wrapper layer where agents pose design or debottlenecking problems to NLP/MILP solvers for equipment sizing and operating-point selection",level:"Good"},
+    ],
+    background:"Preliminary process design, debottlenecking studies, and retrofit feasibility assessments require coordinated input from several disciplines — mass and energy balance, reaction kinetics, equipment sizing, economics, and HAZOP — usually a multi-week effort with several senior engineers. 2026 research in the PSE community has demonstrated multi-agent LLM frameworks where specialized agents cooperate on engineering tasks, exchange structured artifacts, and invoke first-principle simulators as tools, dramatically compressing the design-to-decision cycle.",
+    solution:"Build a multi-agent LLM framework where each agent owns a process-engineering subdomain. Agents communicate through a shared blackboard, call Aspen / DWSIM / Pyomo as tools via the Model Context Protocol, and produce a structured deliverable (preliminary PFD, debottlenecking proposal, retrofit study) that a senior engineer reviews and signs off. Unlike monolithic GenAI tools (project #11), the multi-agent paradigm scales by adding specialist agents rather than re-prompting one model, and provides traceable, auditable reasoning chains per discipline.",
+    benefits:["50–70% reduction in time-to-deliver preliminary design vs single-expert workflow","Output grounded in physics simulator tool calls — eliminates LLM hallucination on numerical claims","Captures cross-discipline best practices in a reusable, versioned agent library","Enables on-demand 'what-if' debottlenecking and retrofit studies for existing customer plants","Standardizes deliverable formats and audit trails across SOS customer projects"],
+    techStack:["Python","LangGraph / CrewAI","Claude / GPT-4o","DWSIM / Aspen HYSYS","Pyomo","Model Context Protocol","Pydantic","FastAPI"],
+    refs:[["Chemicals in the AI Era – IBM Institute for Business Value","https://www.ibm.com/thought-leadership/institute-business-value/en-us/report/chemicals-in-ai-era"],["Agentic AI: A Chemical Industry Revolution Already Underway – SpotChemi","https://blog.spotchemi.com/agentic-ai-a-chemical-industry-revolution-already-underway/"],["A Hybrid Science-Guided ML Approach for Modeling & Optimizing Chemical Processes – arXiv","https://arxiv.org/abs/2112.01475"]]
+  },
+  {
+    id:"15", title:"Hybrid Model for CO₂ Capture (CCUS) Solvent & Energy Optimization",
+    category:"Energy / ESG", catKey:"Energy", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"Very High",
+    techniques:["First Principle","Machine Learning","Deep Learning","Optimization"],
+    teamSkills:[
+      {tech:"First Principle",desc:"Rate-based absorber/stripper model — interfacial mass transfer, vapor-liquid equilibrium for amine solvents (MEA / MDEA / piperazine blends), enthalpy balance on the reboiler",level:"Must"},
+      {tech:"Machine Learning",desc:"Residual ML layer (XGBoost / Gaussian Process) that learns plant-specific deviations — solvent degradation, foaming, packing fouling — from PI history",level:"Must"},
+      {tech:"Deep Learning",desc:"LSTM/Transformer on time-series PI data to forecast CO₂ load, flue-gas composition swings, and solvent inventory drift over a 24–72h horizon",level:"Good"},
+      {tech:"Optimization",desc:"Bayesian optimizer (BoTorch) on the hybrid model to recommend lean-loading set-point, L/G ratio, and stripper pressure that minimize regeneration steam at target capture %",level:"Must"},
+    ],
+    background:"Post-combustion amine-based CO₂ capture is becoming a mandatory unit on chemical and power assets under EU CBAM, Thailand Net-Zero 2065, and customer Scope-1 commitments. The capture unit's regeneration reboiler dominates OPEX (typically 3.5–4.5 GJ/tCO₂), and pure first-principle rate-based models — though accurate — are too slow to drive real-time set-point optimization. Pure ML models, conversely, fail to extrapolate across solvent compositions or load swings. Recent 2026 research demonstrates that hybrid dynamic models combining rate-based equations with ML residual correction outperform either approach alone for amine systems.",
+    solution:"Develop a hybrid dynamic model of the absorber-stripper train: a reduced-order rate-based first-principle core for vapor-liquid equilibrium and mass-transfer kinetics, augmented by an ML residual model that learns the plant-specific deviations (degraded amine, packing fouling, foaming) from PI history. A Bayesian optimizer running on this hybrid model recommends lean-loading set-point, L/G ratio, and stripper pressure that minimize reboiler duty while meeting the contracted capture %. Output is pushed to the DCS as set-point advice; closed-loop activation is gated by HAZOP review.",
+    benefits:["8–15% reduction in regeneration steam consumption per tonne of CO₂ captured","Direct contribution to plant Scope-1 reduction targets and CBAM compliance economics","Hybrid structure extrapolates to off-design solvent blends and load swings where pure-ML fails","Forms the technical core of an 'ESG-as-a-service' offering across SCG and customer sites","Reusable across MEA, MDEA, and piperazine-blend capture units with minimal re-training"],
+    techStack:["Python","Aspen Plus / gPROMS rate-based model","PyTorch","XGBoost","BoTorch","OSIsoft PI","FastAPI","Docker"],
+    refs:[["Physics-Driven Hybrid Intelligence – Tridiagonal AI","https://tridiagonal.ai/blogs/physics-driven-hybrid-intelligence-the-next-frontier-in-chemical-process-optimization"],["Hybrid (AI / First Principle) Models for Polymerization Process Optimization – ScienceDirect","https://www.sciencedirect.com/science/article/abs/pii/S0009250924001751"],["A Hybrid Science-Guided Machine Learning Approach for Chemical & Polymer Processes – ResearchGate","https://www.researchgate.net/publication/379563349_A_Hybrid_Science-Guided_Machine_Learning_Approach_for_Modeling_Chemical_and_Polymer_Processes"]]
   }
 ];
 
@@ -602,68 +629,7 @@ const CAT_COLORS = {
 // ═══════════════════════════════════════════════════════
 let currentCatFilter = "All";
 let activeTechFilters = new Set();
-let currentWeekFilter = "all";
 let currentView = "grid";
-
-// ── WEEK HELPERS ──
-function getWeekMonday(dateStr) {
-  const d = new Date(dateStr + 'T00:00:00');
-  const day = d.getDay();
-  const diff = day === 0 ? -6 : 1 - day;
-  const mon = new Date(d); mon.setDate(d.getDate() + diff);
-  return mon;
-}
-function getWeekKey(dateStr) {
-  const mon = getWeekMonday(dateStr);
-  return mon.toISOString().slice(0,10);
-}
-function getWeekLabel(dateStr) {
-  const mon = getWeekMonday(dateStr);
-  const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
-  const mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  if (mon.getMonth() === sun.getMonth())
-    return `${mon.getDate()}–${sun.getDate()} ${mo[mon.getMonth()]} ${mon.getFullYear()}`;
-  return `${mon.getDate()} ${mo[mon.getMonth()]}–${sun.getDate()} ${mo[sun.getMonth()]} ${mon.getFullYear()}`;
-}
-function isTwoMonthsOld(dateStr) {
-  const d = new Date(dateStr + 'T00:00:00');
-  const cutoff = new Date(); cutoff.setMonth(cutoff.getMonth() - 2);
-  return d >= cutoff;
-}
-function isNewThisWeek(dateStr) {
-  const d = new Date(dateStr + 'T00:00:00');
-  const now = new Date();
-  const diff = (now - d) / (1000 * 60 * 60 * 24);
-  return diff <= 7;
-}
-
-function buildWeekFilterButtons() {
-  const now = new Date();
-  const cutoff = new Date(); cutoff.setMonth(cutoff.getMonth() - 2);
-  // Gather unique week keys from projects within 2-month window
-  const weeks = {};
-  PROJECTS.forEach(p => {
-    const da = p.dateAdded || "2026-03-28";
-    const d = new Date(da + 'T00:00:00');
-    if (d >= cutoff) {
-      const key = getWeekKey(da);
-      if (!weeks[key]) weeks[key] = getWeekLabel(da);
-    }
-  });
-  const sorted = Object.entries(weeks).sort((a,b) => b[0].localeCompare(a[0]));
-  const container = document.getElementById('weekFilterBtns');
-  container.innerHTML = `<button class="week-filter-btn active-week" onclick="setWeekFilter('all',this)">All (2 months)</button>`;
-  sorted.forEach(([key, label]) => {
-    container.innerHTML += `<button class="week-filter-btn" onclick="setWeekFilter('${key}',this)">${label}</button>`;
-  });
-}
-
-function setWeekFilter(key, btn) {
-  currentWeekFilter = key;
-  document.querySelectorAll('.week-filter-btn').forEach(b => b.classList.remove('active-week'));
-  btn.classList.add('active-week');
-  applyFilters();
-}
 
 function setCatFilter(cat, btn) {
   currentCatFilter = cat;
@@ -693,13 +659,9 @@ function setView(v) {
 function clearAllFilters() {
   currentCatFilter = "All";
   activeTechFilters.clear();
-  currentWeekFilter = "all";
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-cat'));
   document.querySelector('.filter-btn').classList.add('active-cat');
   document.querySelectorAll('.tech-filter-btn').forEach(b => b.classList.remove('active-tech'));
-  document.querySelectorAll('.week-filter-btn').forEach(b => b.classList.remove('active-week'));
-  const allWeekBtn = document.querySelector('.week-filter-btn');
-  if (allWeekBtn) allWeekBtn.classList.add('active-week');
   document.getElementById('searchInput').value = '';
   applyFilters();
 }
@@ -707,23 +669,12 @@ function clearAllFilters() {
 function applyFilters() {
   const q = document.getElementById('searchInput').value.toLowerCase();
   const filtered = PROJECTS.filter(p => {
-    const da = p.dateAdded || "2026-03-28";
-    // 4. Limit to 2-month window only
-    if (!isTwoMonthsOld(da)) return false;
-    // 3. Week filter
-    const matchWeek = currentWeekFilter === 'all' || getWeekKey(da) === currentWeekFilter;
     const matchCat = currentCatFilter === 'All' || p.category.includes(currentCatFilter) || p.catKey.includes(currentCatFilter);
     const matchTech = activeTechFilters.size === 0 || [...activeTechFilters].every(t => p.techniques.includes(t));
     const matchQ = !q || p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)
       || p.background.toLowerCase().includes(q) || p.techStack.join(' ').toLowerCase().includes(q)
       || p.techniques.join(' ').toLowerCase().includes(q);
-    return matchWeek && matchCat && matchTech && matchQ;
-  });
-  // 2. Sort newest first (descending by dateAdded)
-  filtered.sort((a, b) => {
-    const da = a.dateAdded || "2026-03-28";
-    const db = b.dateAdded || "2026-03-28";
-    return db.localeCompare(da) || a.id.localeCompare(b.id);
+    return matchCat && matchTech && matchQ;
   });
   renderActiveChips();
   renderCards(filtered);
@@ -732,13 +683,6 @@ function applyFilters() {
 function renderActiveChips() {
   const container = document.getElementById('activeChips');
   const chips = [];
-  if (currentWeekFilter !== 'all') {
-    // Find the label for this week key from any matching project
-    const matchingProj = PROJECTS.find(p => getWeekKey(p.dateAdded || "2026-03-28") === currentWeekFilter);
-    const label = matchingProj ? getWeekLabel(matchingProj.dateAdded || "2026-03-28") : currentWeekFilter;
-    chips.push(`<div class="chip" style="background:#E0F2F1;color:#00695C;border:1px solid #00695C44;">
-      📅 ${label} <span class="chip-x" onclick="clearWeekFilter()">✕</span></div>`);
-  }
   if (currentCatFilter !== 'All') {
     const cc = CAT_COLORS[currentCatFilter] || {bg:"#EEE",color:"#333"};
     chips.push(`<div class="chip" style="background:${cc.bg};color:${cc.color};border:1px solid ${cc.color}33;">
@@ -751,14 +695,6 @@ function renderActiveChips() {
   });
   if (chips.length > 1) chips.push(`<span class="chip-clear" onclick="clearAllFilters()">Clear All</span>`);
   container.innerHTML = chips.join('');
-}
-
-function clearWeekFilter() {
-  currentWeekFilter = 'all';
-  document.querySelectorAll('.week-filter-btn').forEach(b => b.classList.remove('active-week'));
-  const allWeekBtn = document.querySelector('.week-filter-btn');
-  if (allWeekBtn) allWeekBtn.classList.add('active-week');
-  applyFilters();
 }
 
 function setCatFilterDirect(cat) {
@@ -788,9 +724,6 @@ function renderCards(list) {
   grid.className = 'grid' + (currentView === 'list' ? ' list-view' : '');
   grid.innerHTML = list.map(p => {
     const cc = CAT_COLORS[p.catKey] || {bg:"#eee",color:"#333"};
-    const da = p.dateAdded || "2026-03-28";
-    const isNew = isNewThisWeek(da);
-    const weekLabel = getWeekLabel(da);
     const techTags = p.techniques.map(t => {
       const tm = TECH_META[t];
       // highlight matched technique filters
@@ -800,7 +733,7 @@ function renderCards(list) {
     return `<div class="card${currentView === 'list' ? ' list-view' : ''}" onclick="openModal('${p.id}')">
       <div class="card-header">
         <div class="card-num">${p.id}</div>
-        <div class="card-category" style="background:${cc.bg};color:${cc.color}">${p.category}${isNew ? '<span class="new-badge">NEW</span>' : ''}</div>
+        <div class="card-category" style="background:${cc.bg};color:${cc.color}">${p.category}</div>
         <div class="card-title">${p.title}</div>
         <div class="card-techniques">${techTags}</div>
       </div>
@@ -814,7 +747,6 @@ function renderCards(list) {
         <span class="pill pill-complexity-${p.complexity}">${p.complexity}</span>
         <span class="pill pill-poc">⏱ ${p.pocMonths}</span>
         <span class="pill pill-value-${p.valueImpact.replace(' ','')}">💰 ${p.valueImpact}</span>
-        <span class="week-date-pill">📅 ${weekLabel}</span>
         <span style="margin-left:auto;font-size:11px;color:var(--blue-mid);font-weight:600;">Details + Team →</span>
       </div>
     </div>`;
@@ -958,8 +890,7 @@ function updateDate() {
 // INIT
 // ═══════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
-  buildWeekFilterButtons();
-  applyFilters();
+  renderCards(PROJECTS);
   renderBarChart();
   renderTechBarChart();
   updateDate();
