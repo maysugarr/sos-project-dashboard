@@ -262,7 +262,7 @@
   <h1>R&amp;D Project &amp; POC Portfolio</h1>
   <p>First-Principle Models integrated with AI / ML / GenAI / Agentic AI for Chemical Process Manufacturing. Filter by category and technique to match projects with your team's skills.</p>
   <div class="kpi-row">
-    <div class="kpi-card"><div class="kpi-value">13</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 6 domains</div></div>
+    <div class="kpi-card"><div class="kpi-value">15</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 7 domains</div></div>
     <div class="kpi-card"><div class="kpi-value">3</div><div class="kpi-label">Quick POC Wins</div><div class="kpi-sub">3–4 month delivery</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#7ecb9e;">5–30%</div><div class="kpi-label">Avg. Cost Saving</div><div class="kpi-sub">Per project category</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#ffb74d;">$M+</div><div class="kpi-label">Proven ROI</div><div class="kpi-sub">Industry validated</div></div>
@@ -576,6 +576,38 @@ const PROJECTS = [
     benefits:["60–80% reduction in time-to-deploy a new mechanistic digital twin","Automated re-tuning of compartment parameters as the process drifts","Reusable across reactor, distillation, and heat-exchanger families","Lowers the barrier to deploying twins on smaller assets that previously could not justify the engineering cost","Foundation for a twin-as-a-service offering across the SOS portfolio"],
     techStack:["Python","Ray RLlib","gPROMS / Aspen Custom Modeler","SciPy","PyTorch","OSIsoft PI"],
     refs:[["Automated Mechanistic Model Generation for Twins (Part II) – ScienceDirect 2025","https://www.sciencedirect.com/science/article/pii/S0098135425003874"],["Digital Twin Calibration with Model-Based RL – arXiv","https://arxiv.org/pdf/2501.02205"],["DRL-Based Digital Twin for Manufacturing Optimization – MDPI","https://www.mdpi.com/2079-8954/12/2/38"]]
+  },
+  {
+    id:"14", title:"Multi-Agent LLM Framework for Collaborative Process Engineering & Design",
+    category:"R&D / Scale-Up", catKey:"R&D", complexity:"High", pocMonths:"5–7 mo.", valueImpact:"High",
+    techniques:["GenAI / LLM","AI Agent","First Principle","Optimization"],
+    teamSkills:[
+      {tech:"GenAI / LLM",desc:"Specialist LLM agents per discipline (mass balance, kinetics, equipment sizing, economics, safety, documentation) coordinated through a shared blackboard",level:"Must"},
+      {tech:"AI Agent",desc:"Multi-agent orchestration (LangGraph / CrewAI) with structured message passing, tool calling, and human-in-the-loop review checkpoints",level:"Must"},
+      {tech:"First Principle",desc:"Process simulators (Aspen HYSYS / DWSIM / Pyomo) exposed as tools so every agent answer is grounded in physics, not LLM hallucination",level:"Must"},
+      {tech:"Optimization",desc:"Wrapper layer where agents pose design or debottlenecking problems to NLP/MILP solvers for equipment sizing and operating-point selection",level:"Good"},
+    ],
+    background:"Preliminary process design, debottlenecking studies, and retrofit feasibility assessments require coordinated input from several disciplines — mass and energy balance, reaction kinetics, equipment sizing, economics, and HAZOP — usually a multi-week effort with several senior engineers. 2026 research in the PSE community has demonstrated multi-agent LLM frameworks where specialized agents cooperate on engineering tasks, exchange structured artifacts, and invoke first-principle simulators as tools, dramatically compressing the design-to-decision cycle.",
+    solution:"Build a multi-agent LLM framework where each agent owns a process-engineering subdomain. Agents communicate through a shared blackboard, call Aspen / DWSIM / Pyomo as tools via the Model Context Protocol, and produce a structured deliverable (preliminary PFD, debottlenecking proposal, retrofit study) that a senior engineer reviews and signs off. Unlike monolithic GenAI tools (project #11), the multi-agent paradigm scales by adding specialist agents rather than re-prompting one model, and provides traceable, auditable reasoning chains per discipline.",
+    benefits:["50–70% reduction in time-to-deliver preliminary design vs single-expert workflow","Output grounded in physics simulator tool calls — eliminates LLM hallucination on numerical claims","Captures cross-discipline best practices in a reusable, versioned agent library","Enables on-demand 'what-if' debottlenecking and retrofit studies for existing customer plants","Standardizes deliverable formats and audit trails across SOS customer projects"],
+    techStack:["Python","LangGraph / CrewAI","Claude / GPT-4o","DWSIM / Aspen HYSYS","Pyomo","Model Context Protocol","Pydantic","FastAPI"],
+    refs:[["Chemicals in the AI Era – IBM Institute for Business Value","https://www.ibm.com/thought-leadership/institute-business-value/en-us/report/chemicals-in-ai-era"],["Agentic AI: A Chemical Industry Revolution Already Underway – SpotChemi","https://blog.spotchemi.com/agentic-ai-a-chemical-industry-revolution-already-underway/"],["A Hybrid Science-Guided ML Approach for Modeling & Optimizing Chemical Processes – arXiv","https://arxiv.org/abs/2112.01475"]]
+  },
+  {
+    id:"15", title:"Hybrid Model for CO₂ Capture (CCUS) Solvent & Energy Optimization",
+    category:"Energy / ESG", catKey:"Energy", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"Very High",
+    techniques:["First Principle","Machine Learning","Deep Learning","Optimization"],
+    teamSkills:[
+      {tech:"First Principle",desc:"Rate-based absorber/stripper model — interfacial mass transfer, vapor-liquid equilibrium for amine solvents (MEA / MDEA / piperazine blends), enthalpy balance on the reboiler",level:"Must"},
+      {tech:"Machine Learning",desc:"Residual ML layer (XGBoost / Gaussian Process) that learns plant-specific deviations — solvent degradation, foaming, packing fouling — from PI history",level:"Must"},
+      {tech:"Deep Learning",desc:"LSTM/Transformer on time-series PI data to forecast CO₂ load, flue-gas composition swings, and solvent inventory drift over a 24–72h horizon",level:"Good"},
+      {tech:"Optimization",desc:"Bayesian optimizer (BoTorch) on the hybrid model to recommend lean-loading set-point, L/G ratio, and stripper pressure that minimize regeneration steam at target capture %",level:"Must"},
+    ],
+    background:"Post-combustion amine-based CO₂ capture is becoming a mandatory unit on chemical and power assets under EU CBAM, Thailand Net-Zero 2065, and customer Scope-1 commitments. The capture unit's regeneration reboiler dominates OPEX (typically 3.5–4.5 GJ/tCO₂), and pure first-principle rate-based models — though accurate — are too slow to drive real-time set-point optimization. Pure ML models, conversely, fail to extrapolate across solvent compositions or load swings. Recent 2026 research demonstrates that hybrid dynamic models combining rate-based equations with ML residual correction outperform either approach alone for amine systems.",
+    solution:"Develop a hybrid dynamic model of the absorber-stripper train: a reduced-order rate-based first-principle core for vapor-liquid equilibrium and mass-transfer kinetics, augmented by an ML residual model that learns the plant-specific deviations (degraded amine, packing fouling, foaming) from PI history. A Bayesian optimizer running on this hybrid model recommends lean-loading set-point, L/G ratio, and stripper pressure that minimize reboiler duty while meeting the contracted capture %. Output is pushed to the DCS as set-point advice; closed-loop activation is gated by HAZOP review.",
+    benefits:["8–15% reduction in regeneration steam consumption per tonne of CO₂ captured","Direct contribution to plant Scope-1 reduction targets and CBAM compliance economics","Hybrid structure extrapolates to off-design solvent blends and load swings where pure-ML fails","Forms the technical core of an 'ESG-as-a-service' offering across SCG and customer sites","Reusable across MEA, MDEA, and piperazine-blend capture units with minimal re-training"],
+    techStack:["Python","Aspen Plus / gPROMS rate-based model","PyTorch","XGBoost","BoTorch","OSIsoft PI","FastAPI","Docker"],
+    refs:[["Physics-Driven Hybrid Intelligence – Tridiagonal AI","https://tridiagonal.ai/blogs/physics-driven-hybrid-intelligence-the-next-frontier-in-chemical-process-optimization"],["Hybrid (AI / First Principle) Models for Polymerization Process Optimization – ScienceDirect","https://www.sciencedirect.com/science/article/abs/pii/S0009250924001751"],["A Hybrid Science-Guided Machine Learning Approach for Chemical & Polymer Processes – ResearchGate","https://www.researchgate.net/publication/379563349_A_Hybrid_Science-Guided_Machine_Learning_Approach_for_Modeling_Chemical_and_Polymer_Processes"]]
   }
 ];
 
