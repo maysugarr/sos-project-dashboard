@@ -282,7 +282,7 @@
   <h1>SOS Project Research</h1>
   <p>First-Principle Models integrated with AI / ML / GenAI / Agentic AI for Chemical Process Manufacturing. Filter by category, technique, or week to track new research and match projects with your team's skills.</p>
   <div class="kpi-row">
-    <div class="kpi-card"><div class="kpi-value">11</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 6 domains</div></div>
+    <div class="kpi-card"><div class="kpi-value">14</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 6 domains</div></div>
     <div class="kpi-card"><div class="kpi-value">3</div><div class="kpi-label">Quick POC Wins</div><div class="kpi-sub">3–4 month delivery</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#7ecb9e;">5–30%</div><div class="kpi-label">Avg. Cost Saving</div><div class="kpi-sub">Per project category</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#ffb74d;">$M+</div><div class="kpi-label">Proven ROI</div><div class="kpi-sub">Industry validated</div></div>
@@ -581,6 +581,57 @@ const PROJECTS = [
     benefits:["50–70% reduction in scale-up engineering man-hours","Automated first-pass PFD generation for new process routes","Bridges synthesis gap between lab discovery and industrial production","Reduces scale-up timeline from years to months","Supports new product development pipeline for specialty chemicals"],
     techStack:["Python","LangChain","GPT-4 Vision","Aspen Plus API","Scale-up Library","AutoCAD Integration"],
     refs:[["AutoChemSchematic AI – arXiv 2025","https://arxiv.org/abs/2505.24584"],["Hybrid Modelling in Industry 4.0/5.0 – Frontiers","https://www.frontiersin.org/journals/chemical-engineering/articles/10.3389/fceng.2024.1494244/full"],["Generative AI in Chemical Market 2025","https://www.insightaceanalytic.com/report/generative-ai-in-chemical-market/3129"]]
+  },
+  {
+    id:"12", title:"Self-Calibrating Digital Twin with Model-Based Reinforcement Learning",
+    dateAdded:"2026-06-02",
+    category:"Digital Twin", catKey:"Digital Twin", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"High",
+    techniques:["First Principle","Reinforcement Learning","Digital Twin","Machine Learning"],
+    teamSkills:[
+      {tech:"First Principle",desc:"Physics-based plant model (mass/energy balance, kinetics) as the twin's structural backbone",level:"Must"},
+      {tech:"Reinforcement Learning",desc:"Model-based RL (e.g. MBPO / Dyna-style) to jointly calibrate twin parameters and search control policy",level:"Must"},
+      {tech:"Digital Twin",desc:"Real-time DCS/historian sync, online parameter estimation, drift detection",level:"Must"},
+      {tech:"Machine Learning",desc:"Gaussian Process / residual models to capture un-modelled dynamics between calibrations",level:"Good"},
+    ],
+    background:"First-principle digital twins drift away from reality as catalysts age, fouling builds, and feedstock shifts — forcing costly manual re-tuning that lags weeks behind plant state. Recent research shows that calibrating the twin and learning the control policy can be done jointly rather than as separate steps.",
+    solution:"Build a self-calibrating digital twin where a model-based reinforcement learning loop continuously updates first-principle model parameters from live plant data while simultaneously searching for the optimal control policy. The physics backbone constrains the search space (sample-efficient, physically consistent), while the RL layer adapts to drift and finds set-points a static twin would miss. Approach has been shown to provably converge and outperform decoupled calibrate-then-optimize methods.",
+    benefits:["Eliminates weeks-long manual twin re-tuning cycles","Twin stays accurate as catalyst ages and fouling builds","Sample-efficient — physics backbone cuts data needs vs. pure RL","Provably converges to optimal control policy (per 2025 research)","Foundation for autonomous closed-loop optimization"],
+    techStack:["Python","PyTorch","Stable-Baselines3 / Dyna","Aspen Dynamics API","CasADi","OPC-UA / PI historian"],
+    refs:[["Digital Twin Calibration with Model-Based RL – arXiv 2025","https://arxiv.org/pdf/2501.02205"],["DRL-Based Digital Twin for Process Optimization – MDPI Systems","https://www.mdpi.com/2079-8954/12/2/38"],["High-Accuracy Deep Learning Digital Twin of Actual Chemical Processes – ScienceDirect","https://www.sciencedirect.com/science/article/abs/pii/S0952197625017828"]]
+  },
+  {
+    id:"13", title:"Autonomous Multi-Agent AI Fleet for Cross-Site Plant Optimization",
+    dateAdded:"2026-06-02",
+    category:"Operations / GenAI", catKey:"Operations", complexity:"High", pocMonths:"5–7 mo.", valueImpact:"Very High",
+    techniques:["AI Agent","GenAI / LLM","Digital Twin","Optimization"],
+    teamSkills:[
+      {tech:"AI Agent",desc:"Orchestrated fleet of specialized agents (monitoring, what-if, action) with tool-calling and guardrails",level:"Must"},
+      {tech:"GenAI / LLM",desc:"LLM reasoning layer for scenario interpretation, root-cause narration, operator handoff",level:"Must"},
+      {tech:"Digital Twin",desc:"Per-site twins the agents monitor for quality / efficiency drift",level:"Must"},
+      {tech:"Optimization",desc:"Constrained set-point optimization the agents propose / execute under safety limits",level:"Good"},
+    ],
+    background:"Large producers run dozens of similar plants but optimize each in isolation, leaving best-practice set-points and early drift signals stranded site-by-site. Celanese's JO.AI platform now runs multiple AI agents supporting operators across ~50 sites, and a recent survey found nearly 80% of chemical professionals expect to adopt agentic AI soon.",
+    solution:"Deploy a supervised fleet of autonomous agents that monitor each site's digital twin, run what-if scenarios, detect quality/efficiency drift, and propose (or, within bounded limits, execute) corrective set-point and catalyst-feed adjustments. A central LLM reasoning layer shares learnings across sites and narrates rationale to operators. Human-on-the-loop guardrails gate any write-back to the DCS. One reported deployment cut unplanned downtime ~20% with energy and quality gains.",
+    benefits:["Cross-site learning — best set-points propagate automatically","~20% unplanned-downtime reduction reported in comparable deployments","Early drift detection before quality excursions","Operator handoff with plain-language rationale","Scales one optimization effort across an entire plant fleet"],
+    techStack:["Python","LangGraph","Claude / GPT-4o","Vector DB (RAG)","Kongsberg / AVEVA digital twin","OPC-UA write-back gateway"],
+    refs:[["Chemical Industry to Bet on Agentic AI – C&EN 2026","https://cen.acs.org/physical-chemistry/computational-chemistry/Chemical-industry-bet-agentic-AI/104/web/2026/01"],["Agentic AI Meets Digital Twins – Kongsberg Digital","https://kongsbergdigital.com/blog/the-new-intelligence-layer-transforming-the-chemical-industry-agentic-ai-meets-digital-twins"],["Chemicals in the AI Era – IBM IBV","https://www.ibm.com/thought-leadership/institute-business-value/en-us/report/chemicals-in-ai-era"]]
+  },
+  {
+    id:"14", title:"Deep RL Closed-Loop Control for Distillation Energy Minimization",
+    dateAdded:"2026-06-02",
+    category:"Energy / ESG", catKey:"Energy", complexity:"High", pocMonths:"4–5 mo.", valueImpact:"High",
+    techniques:["Reinforcement Learning","First Principle","Digital Twin","Deep Learning"],
+    teamSkills:[
+      {tech:"Reinforcement Learning",desc:"Deep RL agent (PPO / SAC) trained against a column twin to minimize reboiler duty at spec",level:"Must"},
+      {tech:"First Principle",desc:"Rigorous distillation model (VLE, tray hydraulics, energy balance) as the training environment",level:"Must"},
+      {tech:"Digital Twin",desc:"Calibrated column twin for safe offline training before online deployment",level:"Good"},
+      {tech:"Deep Learning",desc:"Neural surrogate of the column for fast RL rollouts; LSTM for composition estimation",level:"Good"},
+    ],
+    background:"Distillation is among the most energy-intensive unit operations in a chemical plant, and conservative manual control routinely over-refluxes columns to guarantee spec, wasting reboiler steam. A 2025 digital-twin study of an actual methanol distillation process showed efficient parameter search can replace tedious trial-and-error tuning.",
+    solution:"Train a deep reinforcement learning agent against a calibrated first-principle digital twin of a distillation column to learn an energy-minimal control policy that holds product purity at spec while reducing reflux and reboiler duty. The physics-based twin provides a safe, high-fidelity training environment; a neural surrogate accelerates RL rollouts. The policy is validated on the twin, then deployed in advisory mode before closed-loop hand-off, with cross-system data integration reported to deliver ~20% energy optimization.",
+    benefits:["10–20% reboiler steam reduction at maintained product spec","Cuts quality giveaway from conservative over-refluxing","Safe offline RL training on the physics twin — no plant risk","Adapts to feed composition and ambient swings","Directly advances Scope-1 energy/CO₂ reduction targets"],
+    techStack:["Python","Stable-Baselines3 (PPO/SAC)","Aspen Plus / DWSIM twin","PyTorch surrogate","CasADi","OPC-UA"],
+    refs:[["High-Accuracy Deep Learning Digital Twin of Methanol Distillation – ScienceDirect","https://www.sciencedirect.com/science/article/abs/pii/S0952197625017828"],["DRL-Based Digital Twin for Manufacturing Process Optimization – MDPI","https://www.mdpi.com/2079-8954/12/2/38"],["Digital Twins in Chemical Manufacturing – iFactory","https://ifactoryapp.com/industries/chemical-plant/digital-twins-chemical-manufacturing-process-optimization"]]
   }
 ];
 
