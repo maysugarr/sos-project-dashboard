@@ -282,7 +282,7 @@
   <h1>SOS Project Research</h1>
   <p>First-Principle Models integrated with AI / ML / GenAI / Agentic AI for Chemical Process Manufacturing. Filter by category, technique, or week to track new research and match projects with your team's skills.</p>
   <div class="kpi-row">
-    <div class="kpi-card"><div class="kpi-value">14</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 6 domains</div></div>
+    <div class="kpi-card"><div class="kpi-value">18</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 6 domains</div></div>
     <div class="kpi-card"><div class="kpi-value">3</div><div class="kpi-label">Quick POC Wins</div><div class="kpi-sub">3–4 month delivery</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#7ecb9e;">5–30%</div><div class="kpi-label">Avg. Cost Saving</div><div class="kpi-sub">Per project category</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#ffb74d;">$M+</div><div class="kpi-label">Proven ROI</div><div class="kpi-sub">Industry validated</div></div>
@@ -632,6 +632,73 @@ const PROJECTS = [
     benefits:["10–20% reboiler steam reduction at maintained product spec","Cuts quality giveaway from conservative over-refluxing","Safe offline RL training on the physics twin — no plant risk","Adapts to feed composition and ambient swings","Directly advances Scope-1 energy/CO₂ reduction targets"],
     techStack:["Python","Stable-Baselines3 (PPO/SAC)","Aspen Plus / DWSIM twin","PyTorch surrogate","CasADi","OPC-UA"],
     refs:[["High-Accuracy Deep Learning Digital Twin of Methanol Distillation – ScienceDirect","https://www.sciencedirect.com/science/article/abs/pii/S0952197625017828"],["DRL-Based Digital Twin for Manufacturing Process Optimization – MDPI","https://www.mdpi.com/2079-8954/12/2/38"],["Digital Twins in Chemical Manufacturing – iFactory","https://ifactoryapp.com/industries/chemical-plant/digital-twins-chemical-manufacturing-process-optimization"]]
+  },
+  {
+    id:"15", title:"Hybrid Model for Polymerization Grade-Transition Optimization",
+    dateAdded:"2026-06-08",
+    category:"Reaction Engineering", catKey:"Reaction", complexity:"High", pocMonths:"4–5 mo.", valueImpact:"High",
+    techniques:["First Principle","Machine Learning","Optimization","Deep Learning"],
+    teamSkills:[
+      {tech:"First Principle",desc:"Polymerization kinetics, population/moment balances and reactor energy balance as the model backbone",level:"Must"},
+      {tech:"Machine Learning",desc:"Residual / Gaussian-Process models capturing un-modelled effects (impurities, fouling, branching)",level:"Must"},
+      {tech:"Optimization",desc:"Dynamic trajectory optimization of feed, temperature and initiator profiles to minimize transition time and off-spec",level:"Must"},
+      {tech:"Deep Learning",desc:"LSTM/DNN soft sensors for molecular-weight distribution and conversion between lab samples",level:"Good"},
+    ],
+    background:"Polymer plants lose significant material and energy during grade transitions, when reactors are driven from one product spec to another and everything produced in between is off-spec or downgraded. Conservative manual transition recipes prolong this window. A 2024 study on styrene polymerization showed that hybrid AI/first-principle models can predict reactor behaviour accurately enough to optimize these dynamic moves.",
+    solution:"Build a hybrid model where first-principle polymerization kinetics and population/moment balances form the structural backbone, while a machine-learning residual layer corrects for un-modelled effects such as impurities, branching and fouling. A dynamic optimizer then searches for the feed, temperature and initiator trajectories that move the reactor between grades in minimum time with minimum off-spec polymer, subject to safety and runaway constraints. Soft-sensor neural nets estimate molecular-weight distribution between lab samples so the optimizer runs on live state.",
+    benefits:["20–40% shorter grade-transition windows vs. fixed recipes","Less off-spec / downgraded polymer per transition","Better extrapolation than pure ML — physics bounds keep predictions feasible","Soft sensors cut reliance on slow offline MWD lab analysis","Reusable framework across reactor lines and product grades"],
+    techStack:["Python","gPROMS / Aspen Polymers","CasADi / Pyomo","scikit-learn (GP)","PyTorch (LSTM)","OPC-UA / PI historian"],
+    refs:[["Hybrid (AI/First-Principle) Models for Styrene Polymerization Optimization – Chem. Eng. Science 2024","https://www.sciencedirect.com/science/article/abs/pii/S0009250924001751"],["A Hybrid Science-Guided Machine Learning Approach for Modeling Chemical and Polymer Processes – arXiv","https://arxiv.org/abs/2112.01475"],["Optimizing Chemical Production Using Data-Driven Hybrid Modeling – Navigance","https://blog.navigance.com/optimizing-chemical-production"]]
+  },
+  {
+    id:"16", title:"Transparent Molecular-to-Process Hybrid ML for Multi-Objective Reaction Optimization",
+    dateAdded:"2026-06-08",
+    category:"Reaction Engineering", catKey:"Reaction", complexity:"High", pocMonths:"5–6 mo.", valueImpact:"High",
+    techniques:["First Principle","Machine Learning","Optimization"],
+    teamSkills:[
+      {tech:"First Principle",desc:"Molecular-level reaction mechanisms and kinetics linked to reactor mass/energy balances",level:"Must"},
+      {tech:"Machine Learning",desc:"Interpretable / explainable ML (SHAP, monotonic constraints) mapping process data to yield and selectivity",level:"Must"},
+      {tech:"Optimization",desc:"Multi-objective (yield vs. energy vs. by-product) Pareto optimization over operating conditions",level:"Must"},
+    ],
+    background:"Reaction units are tuned for yield while energy use and by-product formation are traded off informally, and pure black-box ML recommendations are often distrusted by process engineers because they ignore reaction chemistry. A 2024 study demonstrated a transparent AI-assisted workflow that integrates plant process data with molecular-level reaction mechanisms and then runs multi-objective optimization.",
+    solution:"Combine molecular-level reaction mechanisms and kinetics (first principle) with an interpretable machine-learning layer trained on plant data, so predictions stay consistent with the underlying chemistry and can be explained to engineers via feature attribution and monotonic constraints. A multi-objective optimizer then maps the Pareto front trading yield, energy consumption and by-product formation, letting operations choose set-points with full transparency rather than a single opaque recommendation. The mechanism grounding improves extrapolation to operating regions with little historical data.",
+    benefits:["Higher yield/selectivity with quantified energy and by-product trade-offs","Explainable recommendations engineers can trust and sign off","Mechanism grounding improves extrapolation beyond historical data","Pareto front supports scenario-based decision making","Transferable methodology across reaction systems"],
+    techStack:["Python","scikit-learn / XGBoost","SHAP","pymoo (NSGA-II)","RDKit / kinetics toolkit","Aspen Plus"],
+    refs:[["Transparent AI-Assisted Chemical Engineering: ML Modeling and Multi-Objective Optimization Integrating Process Data and Molecular-Level Mechanisms – ScienceDirect 2024","https://www.sciencedirect.com/science/article/abs/pii/S095965262400859X"],["A Hybrid Framework of First-Principles Model and Machine Learning for Optimizing Control Parameters in Chemical Processes – ScienceDirect","https://www.sciencedirect.com/science/article/abs/pii/S1226086X24004623"],["Physics-Driven Hybrid Intelligence: The Next Frontier in Chemical Process Optimization – Tridiagonal","https://tridiagonal.ai/blogs/physics-driven-hybrid-intelligence-the-next-frontier-in-chemical-process-optimization"]]
+  },
+  {
+    id:"17", title:"AI-Powered Digital Twin for Accelerated Catalysis & Lab Experimentation",
+    dateAdded:"2026-06-15",
+    category:"R&D / Scale-Up", catKey:"R&D", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"High",
+    techniques:["Digital Twin","AI Agent","Machine Learning","First Principle"],
+    teamSkills:[
+      {tech:"Digital Twin",desc:"Real-time mirror of lab reactor: sensor stream ingestion, state estimation, online parameter update",level:"Must"},
+      {tech:"AI Agent",desc:"Autonomous agent that interprets live sensor data, updates hypotheses, and proposes mid-experiment parameter adjustments",level:"Must"},
+      {tech:"Machine Learning",desc:"Surrogate / emulator models (Gaussian Process, neural network) enabling rapid what-if sweeps over experimental conditions",level:"Must"},
+      {tech:"First Principle",desc:"Reaction kinetics and transport-phenomena backbone ensuring agent suggestions stay physically consistent",level:"Good"},
+    ],
+    background:"R&D catalysis experiments for batteries, fuel cells, and specialty chemicals involve slow iteration cycles: run experiment → collect data → analyze offline → form new hypothesis → re-run. Each cycle can take days to weeks. Lawrence Berkeley National Laboratory's 2026 'Digital Twin for Chemical Science' (DTCS) platform demonstrated that an AI-powered digital twin can compress interpretation cycles from days to minutes by continuously mirroring a live experiment and enabling real-time hypothesis testing.",
+    solution:"Build an AI-powered digital twin of the laboratory reactor that ingests live sensor streams (spectroscopy, temperature, composition, pressure). An AI agent continuously updates a physics-backed surrogate model and proposes parameter adjustments — temperature ramps, feed ratios, catalyst loadings — during the experiment rather than after it. Researchers validate hypotheses and iterate mid-run, dramatically reducing the number of physical experimental repetitions required. The first-principle backbone (kinetics, mass transfer) keeps the agent's suggestions chemically feasible.",
+    benefits:["Compress catalyst screening cycles from weeks to days","Validate multiple hypotheses within a single experimental run","Dramatically reduce number of physical experiments needed","AI agent surfaces non-obvious parameter combinations humans would not test","Bridges lab findings directly to scalable process conditions"],
+    techStack:["Python","Gaussian Process / PyTorch surrogate","LangChain Agent","Lab instrument APIs (OPC-UA / REST)","InfluxDB","Plotly Dash"],
+    refs:[["Science on the Double: AI-Powered Digital Twin Accelerates Chemistry & Materials Discoveries – Lawrence Berkeley National Laboratory, Feb 2026","https://newscenter.lbl.gov/2026/02/17/science-on-the-double-how-an-ai-powered-digital-twin-accelerates-chemistry-and-materials-discoveries/"],["AI-Powered Digital Twin Boosts Chemistry, Materials Research – NERSC 2026","https://www.nersc.gov/news-and-events/news/science-on-the-double-how-an-ai-powered-digital-twin-accelerates-chemistry-and-materials-discoveries"],["Machine Learning for Accelerating Energy Materials Discovery – Advanced Energy Materials, Wiley 2026","https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202503356"]]
+  },
+  {
+    id:"18", title:"Deep RL Digital Twin for Resilient Production Planning under Supply Disruptions",
+    dateAdded:"2026-06-15",
+    category:"Supply Chain", catKey:"Supply Chain", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"High",
+    techniques:["Reinforcement Learning","Digital Twin","Deep Learning","Optimization"],
+    teamSkills:[
+      {tech:"Reinforcement Learning",desc:"Deep RL agent (PPO / DQN) trained against the production digital twin to learn disruption-resilient scheduling policies",level:"Must"},
+      {tech:"Digital Twin",desc:"High-fidelity digital twin of the production system capturing capacity, cycle times, and transition constraints for safe offline RL training",level:"Must"},
+      {tech:"Deep Learning",desc:"Neural network policy / value function approximation; demand signal encoder (LSTM) for uncertainty modeling",level:"Must"},
+      {tech:"Optimization",desc:"Constraint solver as a safety wrapper ensuring RL-proposed schedules satisfy hard capacity and safety constraints",level:"Good"},
+    ],
+    background:"Chemical manufacturing plants face volatile demand signals, raw-material supply disruptions, and complex multi-product scheduling. Traditional deterministic optimizers (MIP, heuristic rules) are brittle under uncertainty — they produce schedules that break when conditions deviate from plan. A 2025 ScienceDirect study demonstrated that a deep RL agent trained against a digital twin of a manufacturing environment learns scheduling policies that remain robust and adaptive under real-time demand uncertainty, outperforming conventional approaches in both cost and resilience.",
+    solution:"Construct a digital twin of the chemical plant's production system — capturing equipment capacity, product cycle times, transition matrices, and inventory dynamics. A deep RL agent is trained entirely within this twin, exposing it to thousands of simulated demand-disruption scenarios including spikes, shortfalls, and supplier outages. The agent learns a flexible, policy-driven scheduling strategy: it front-loads, defers, or reroutes production as disruptions unfold. A constraint-optimization wrapper enforces hard safety and capacity limits on the agent's actions before they are presented to planners. The resulting policy is deployed in advisory mode — planners receive AI-proposed schedules with disruption-scenario rationale.",
+    benefits:["Schedules remain robust and adaptive when demand signals shift unexpectedly","RL policy improves continuously as new disruption patterns are encountered","Digital twin training eliminates risk of live-production scheduling experiments","Reduces inventory holding, expediting, and penalty costs from reactive replanning","Validated approach: deep RL + digital twin outperforms deterministic scheduling under uncertainty (2025 research)"],
+    techStack:["Python","Stable-Baselines3 (PPO/DQN)","SimPy production twin","PyTorch LSTM encoder","Google OR-Tools (constraint wrapper)","SAP / ERP integration"],
+    refs:[["Deep RL Digital Twin for Resilient Production Planning under Demand Uncertainty – ScienceDirect 2025","https://www.sciencedirect.com/science/article/abs/pii/S0360835225005352"],["A Deep-Reinforcement-Learning-Based Digital Twin for Manufacturing Process Optimization – MDPI Systems","https://www.mdpi.com/2079-8954/12/2/38"],["Digital Twins in Chemical Manufacturing: Process Optimization with Real-Time Simulation – iFactory","https://ifactoryapp.com/industries/chemical-plant/digital-twins-chemical-manufacturing-process-optimization"]]
   }
 ];
 
