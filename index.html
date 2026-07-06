@@ -281,8 +281,9 @@
 <div class="hero">
   <h1>SOS Project Research</h1>
   <p>First-Principle Models integrated with AI / ML / GenAI / Agentic AI for Chemical Process Manufacturing. Filter by category, technique, or week to track new research and match projects with your team's skills.</p>
+  <div style="color:#5a9fd0;font-size:11px;margin-top:10px;font-weight:600;letter-spacing:0.3px;">📅 Last Updated: 06 Jul 2026</div>
   <div class="kpi-row">
-    <div class="kpi-card"><div class="kpi-value">22</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 6 domains</div></div>
+    <div class="kpi-card"><div class="kpi-value">25</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 10 domains</div></div>
     <div class="kpi-card"><div class="kpi-value">3</div><div class="kpi-label">Quick POC Wins</div><div class="kpi-sub">3–4 month delivery</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#7ecb9e;">5–30%</div><div class="kpi-label">Avg. Cost Saving</div><div class="kpi-sub">Per project category</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#ffb74d;">$M+</div><div class="kpi-label">Proven ROI</div><div class="kpi-sub">Industry validated</div></div>
@@ -767,6 +768,55 @@ const PROJECTS = [
     benefits:["10–20% site energy reduction by optimizing the utility network as a whole","Real-time, emissions-aware dispatch against live price and CO2 signals","Safe what-if scenario testing on the twin before touching the plant","ML surrogates make plant-wide optimization fast enough for online use","Directly supports ESG / decarbonization reporting and targets"],
     techStack:["Python","Aspen Utilities / EnergyPlus-class twin","Pinch analysis","Pyomo / OR-Tools (MILP)","PI / OPC-UA historian","scikit-learn surrogates"],
     refs:[["Digital twins for energy management: bridging virtual intelligence and physical systems – Applied Energy / ScienceDirect 2026","https://www.sciencedirect.com/science/article/abs/pii/S0306261926007026"],["Digital Twins in Chemical Manufacturing: Process Optimization with Real-Time Simulation – iFactory 2026","https://ifactoryapp.com/industries/chemical-plant/digital-twins-chemical-manufacturing-process-optimization"]]
+  },
+  {
+    id:"23", title:"Event-Driven RL for Multi-Product Batch Plant Scheduling & Dispatch",
+    dateAdded:"2026-07-06",
+    category:"Supply Chain", catKey:"Supply Chain", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"High",
+    techniques:["Reinforcement Learning","Digital Twin","Optimization"],
+    teamSkills:[
+      {tech:"Reinforcement Learning",desc:"Event-driven, centralized-agent RL with temporal-difference formulation for multi-objective scheduling policy",level:"Must"},
+      {tech:"Digital Twin",desc:"Discrete-event simulation of the plant's equipment network (routing, cycle times, changeovers) as the training environment",level:"Must"},
+      {tech:"Optimization",desc:"Multi-objective reward shaping and hard-constraint wrapper balancing throughput, utilization and due-dates",level:"Good"},
+    ],
+    background:"Multi-product specialty chemical and formulation plants route batches through shared reactors, finishing lines and packaging in complex, product-dependent sequences — structurally the same problem semiconductor fabs face routing wafers through hundreds of steps across shared tools. Static dispatch rules and fixed-interval schedules cannot react in real time to queueing, breakdowns or rush orders, leaving throughput and equipment utilization below what the network could achieve. A June 2026 study from Politecnico di Milano and STMicroelectronics showed that reformulating fab control as an event-driven, centralized-agent RL problem — rather than a fixed-interval control loop — lets policies scale to long-horizon, high-dimensional scheduling decisions with delayed feedback.",
+    solution:"Build a discrete-event digital twin of the multi-product plant's equipment network — reactors, finishing lines, packaging, shared utilities — capturing routing rules, cycle times and changeover constraints. Train a centralized RL agent against this twin using an event-driven temporal-difference formulation, so the policy reacts to discrete events (batch completion, equipment failure, rush order) instead of a fixed review interval. Validate the policy offline against historical scenarios, then pilot it online in advisory dispatch mode before any closed-loop hand-off, with multi-objective rewards balancing throughput, on-time delivery and utilization.",
+    benefits:["Consistent throughput and utilization gains over static dispatch rules in both offline and online training (published 2026 results)","Scales to long-horizon, high-dimensional scheduling problems that defeat deterministic MIP/heuristic schedulers","Reacts to breakdowns and rush orders in real time instead of waiting for the next fixed review interval","Discrete-event twin lets planners stress-test the policy against disruption scenarios with zero production risk","Framework proven first in wafer fabs, directly transferable to multi-product batch and specialty-chemical lines"],
+    techStack:["Python","Stable-Baselines3 / custom RL","SimPy or AnyLogic discrete-event twin","PyTorch","Google OR-Tools (constraint layer)","MES/ERP integration"],
+    refs:[["Event-Driven Reinforcement Learning Enables Long-Horizon Control in Semiconductor Fabrication – arXiv, Jun 2026","https://arxiv.org/abs/2606.10705"],["Event-Driven RL Targets Long-Horizon Fab Control – Semiconductor Engineering, Jun 2026","https://semiengineering.com/event-driven-rl-targets-long-horizon-fab-control/"]]
+  },
+  {
+    id:"24", title:"LLM Agent for Autonomous Heterogeneous Catalyst Screening",
+    dateAdded:"2026-07-06",
+    category:"R&D / Scale-Up", catKey:"R&D", complexity:"High", pocMonths:"3–5 mo.", valueImpact:"High",
+    techniques:["GenAI / LLM","AI Agent","First Principle","Machine Learning"],
+    teamSkills:[
+      {tech:"AI Agent",desc:"MCP-server tool orchestration: slab construction, adsorption-energy calls, constraint evaluation, iterative structural refinement",level:"Must"},
+      {tech:"GenAI / LLM",desc:"LLM reasoning that translates natural-language screening objectives (e.g. target ORR/NRR/CO2RR descriptors) into reproducible action sequences",level:"Must"},
+      {tech:"First Principle",desc:"DFT-level adsorption-energy and stability calculations as the ground-truth tool the agent calls and validates against",level:"Must"},
+      {tech:"Machine Learning",desc:"Candidate ranking and convergence heuristics across iterative refinement trials",level:"Good"},
+    ],
+    background:"Heterogeneous catalyst discovery for reactions like hydrogenation and ORR/NRR/CO2RR-relevant decarbonization chemistries traditionally needs a DFT specialist to hand-configure every candidate's slab, adsorption sites and constraint checks — a slow, expert-bottlenecked loop. A 2026 paper, 'Catalyst-Agent,' showed that an LLM-powered agent built on a Model Context Protocol (MCP) server can turn a scientist's natural-language screening objective directly into a reproducible sequence of DFT-adjacent actions, with no DFT expert needed in the loop for routine screening.",
+    solution:"Deploy an MCP-server-based LLM agent that accepts natural-language catalyst-screening objectives and autonomously runs the full workflow: candidate-material search, slab construction, adsorption-energy calculation, constraint evaluation, and iterative structural refinement whenever a candidate fails. The agent calls first-principle DFT-level tools for every energetics calculation, so results stay physically grounded even though the orchestration layer is LLM-driven. A lightweight ranking layer tracks which candidates are converging toward target descriptors across refinement trials and flags promising leads for lab validation.",
+    benefits:["Converges to a successful candidate within ~1–3.5 refinement trials on average, per published results","Surfaced catalyst candidates (e.g. Sn3Sc, Sn3Y, Tl3La, Pb3Y) not previously reported in the literature","Removes the DFT-expert bottleneck from routine screening — scientists direct campaigns in natural language","Modular MCP architecture isolates tool/software dependencies, easing integration with existing DFT stacks","Low marginal cost per screening campaign at current LLM API rate limits/pricing"],
+    techStack:["Python","MCP server","LLM API (Claude / GPT-4-class)","VASP / Quantum ESPRESSO (DFT)","ASE","Materials Project / OQMD data"],
+    refs:[["Catalyst-Agent: Autonomous Heterogeneous Catalyst Screening with an LLM Agent – arXiv, 2026","https://arxiv.org/abs/2603.01311"],["Catalyst-Agent preprint – ResearchGate","https://www.researchgate.net/publication/401469121_Catalyst-Agent_Autonomous_heterogeneous_catalyst_screening_and_optimization_with_an_LLM_Agent"],["Autonomous Heterogeneous Catalyst Discovery with a Self-Evolving Multi-Agent Digital Twin – arXiv, Jun 2026","https://arxiv.org/abs/2606.05050"]]
+  },
+  {
+    id:"25", title:"Physics-Informed RNN for Batch Crystallization Quality Control",
+    dateAdded:"2026-07-06",
+    category:"Quality / Control", catKey:"Quality", complexity:"Medium", pocMonths:"3–4 mo.", valueImpact:"High",
+    techniques:["First Principle","Deep Learning","Machine Learning"],
+    teamSkills:[
+      {tech:"First Principle",desc:"Population balance model for crystal size distribution, nucleation/growth kinetics and solubility as the mechanistic backbone",level:"Must"},
+      {tech:"Deep Learning",desc:"Physics-informed recurrent neural network (PIRNN) blending population-balance residuals with sequence learning",level:"Must"},
+      {tech:"Machine Learning",desc:"Robustness testing and calibration against noise, solubility-model shift and sparse sampling",level:"Good"},
+    ],
+    background:"Batch crystallization sets final product quality — crystal size distribution, purity, filterability — for many specialty and fine chemicals, but plant data is noisy, sparsely sampled and prone to solubility-model shift between campaigns, conditions where pure data-driven soft sensors degrade badly and rigid mechanistic population-balance models don't fit reality. A 2026 Industrial & Engineering Chemistry Research study stress-tested physics-informed recurrent neural networks (PIRNNs) against exactly these failure modes using controlled noise, solubility shift and limited sampling.",
+    solution:"Build a physics-informed recurrent neural network that embeds the mechanistic population-balance model (nucleation, growth, solubility) as a residual/regularization term inside a recurrent architecture trained on batch trajectory data. The physics term keeps predictions consistent with crystallization kinetics even when plant data is noisy or sparse, while the recurrent layer captures batch-to-batch dynamics the mechanistic model alone misses. The validated model becomes a real-time soft sensor for crystal size distribution and a foundation for future MPC-based crystallizer control alongside the team's existing APC work.",
+    benefits:["Physics regularization improved test-set accuracy by more than an order of magnitude over purely data-driven models under systematic solubility-model error (published 2026 result)","Stable learning and accurate kinetic-parameter recovery despite noisy, sparsely sampled plant data","Real-time crystal-size-distribution estimate closes the gap left by slow offline particle-size lab analysis","Physics grounding improves extrapolation to new solvents/grades with limited historical data","Natural extension path into MPC-based crystallizer control alongside existing APC capability"],
+    techStack:["Python","PyTorch","Population Balance Equation solver","LSTM/GRU","SciPy","OSIsoft PI"],
+    refs:[["Modeling Batch Crystallization under Uncertainty Using Physics-Informed Machine Learning – Ind. Eng. Chem. Res., 2026","https://pubs.acs.org/doi/10.1021/acs.iecr.6c00599"],["Modeling Batch Crystallization under Uncertainty Using Physics-informed Machine Learning – arXiv preprint, 2026","https://arxiv.org/abs/2602.07184"],["Physics-Informed Machine Learning for MPC: Application to a Batch Crystallization Process – ResearchGate","https://www.researchgate.net/publication/369044169_Physics-Informed_Machine_Learning_for_MPC_Application_to_a_Batch_Crystallization_Process"]]
   }
 ];
 
