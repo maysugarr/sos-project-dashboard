@@ -281,9 +281,9 @@
 <div class="hero">
   <h1>SOS Project Research</h1>
   <p>First-Principle Models integrated with AI / ML / GenAI / Agentic AI for Chemical Process Manufacturing. Filter by category, technique, or week to track new research and match projects with your team's skills.</p>
-  <div style="color:#5a9fd0;font-size:11px;margin-top:10px;font-weight:600;letter-spacing:0.3px;">📅 Last Updated: 06 Jul 2026</div>
+  <div style="color:#5a9fd0;font-size:11px;margin-top:10px;font-weight:600;letter-spacing:0.3px;">📅 Last Updated: 13 Jul 2026</div>
   <div class="kpi-row">
-    <div class="kpi-card"><div class="kpi-value">25</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 10 domains</div></div>
+    <div class="kpi-card"><div class="kpi-value">27</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 10 domains</div></div>
     <div class="kpi-card"><div class="kpi-value">3</div><div class="kpi-label">Quick POC Wins</div><div class="kpi-sub">3–4 month delivery</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#7ecb9e;">5–30%</div><div class="kpi-label">Avg. Cost Saving</div><div class="kpi-sub">Per project category</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#ffb74d;">$M+</div><div class="kpi-label">Proven ROI</div><div class="kpi-sub">Industry validated</div></div>
@@ -817,6 +817,39 @@ const PROJECTS = [
     benefits:["Physics regularization improved test-set accuracy by more than an order of magnitude over purely data-driven models under systematic solubility-model error (published 2026 result)","Stable learning and accurate kinetic-parameter recovery despite noisy, sparsely sampled plant data","Real-time crystal-size-distribution estimate closes the gap left by slow offline particle-size lab analysis","Physics grounding improves extrapolation to new solvents/grades with limited historical data","Natural extension path into MPC-based crystallizer control alongside existing APC capability"],
     techStack:["Python","PyTorch","Population Balance Equation solver","LSTM/GRU","SciPy","OSIsoft PI"],
     refs:[["Modeling Batch Crystallization under Uncertainty Using Physics-Informed Machine Learning – Ind. Eng. Chem. Res., 2026","https://pubs.acs.org/doi/10.1021/acs.iecr.6c00599"],["Modeling Batch Crystallization under Uncertainty Using Physics-informed Machine Learning – arXiv preprint, 2026","https://arxiv.org/abs/2602.07184"],["Physics-Informed Machine Learning for MPC: Application to a Batch Crystallization Process – ResearchGate","https://www.researchgate.net/publication/369044169_Physics-Informed_Machine_Learning_for_MPC_Application_to_a_Batch_Crystallization_Process"]]
+  },
+  {
+    id:"26", title:"Graph Neural Network Optimization for Multi-Component Distillation",
+    dateAdded:"2026-07-13",
+    category:"Process Control", catKey:"Process Control", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"High",
+    techniques:["First Principle","Deep Learning","Optimization"],
+    teamSkills:[
+      {tech:"Deep Learning",desc:"Graph neural network with spatiotemporal graph convolution over the tray–component network; attention layers to locate heat-transfer bottleneck trays",level:"Must"},
+      {tech:"First Principle",desc:"Column MESH equations, vapor–liquid equilibrium and tray energy/mass balances that define the graph topology and physical constraints",level:"Must"},
+      {tech:"Optimization",desc:"Real-time set-point and separation-path optimization over the GNN model to minimize energy at product spec",level:"Good"},
+    ],
+    background:"Distillation is the workhorse — and the largest energy sink — of chemical separations, yet conventional tray-by-tray models are either too slow or too simplified for real-time, column-wide optimization of multi-component separations. A 2026 study in Chemical Engineering Research & Design showed that a graph neural network naturally represents the tray–component network as nodes and edges, so spatiotemporal graph convolution can capture dynamic mass-transfer flux and attention mechanisms can pinpoint the heat-transfer bottleneck trays that drive energy use.",
+    solution:"Build a graph neural network whose node–edge structure mirrors the column's physical tray-and-component topology, trained on historian and first-principle simulation data so predictions stay consistent with MESH and VLE physics. Spatiotemporal graph convolution captures dynamic mass-transfer flux between trays while attention layers flag the bottleneck trays; a real-time decision layer then optimizes set-points and separation paths against product-spec and energy objectives. Because the graph is defined by the column's physics, the model stays interpretable and generalizes across operating conditions better than a black-box network.",
+    benefits:["~15% energy-consumption reduction via GNN-based separation-path optimization (2026 study)","Fault-detection accuracy up to 92% from learning tray-level interaction patterns","Attention mechanism localizes heat-transfer bottleneck trays for targeted debottlenecking","Physics-defined graph topology improves generalization over black-box models","Real-time decision support for multi-component separation vs. slow rigorous simulation"],
+    techStack:["Python","PyTorch Geometric","Graph Neural Network","Aspen Plus (rigorous column model)","OSIsoft PI","Pyomo / SciPy optimizer"],
+    refs:[["Optimization Model of Distillation Tower Operation Based on Graph Neural Network – Chem. Eng. Research & Design, 2026","https://www.sciencedirect.com/science/article/abs/pii/S0263876226000869"],["Hybrid Neural Networks for Improved Chemical Process Modeling: Bridging Data-Driven Insights with Physical Consistency – ScienceDirect 2025","https://www.sciencedirect.com/science/article/pii/S2772508125000407"],["2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing – arXiv","https://arxiv.org/abs/2605.00839"]]
+  },
+  {
+    id:"27", title:"Neural-Operator Surrogates for Real-Time Process Digital Twins",
+    dateAdded:"2026-07-13",
+    category:"Digital Twin", catKey:"Digital Twin", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"High",
+    techniques:["First Principle","Deep Learning","Digital Twin","Optimization"],
+    teamSkills:[
+      {tech:"Deep Learning",desc:"Neural operators (Fourier Neural Operator / DeepONet) that learn the PDE solution operator for millisecond twin inference",level:"Must"},
+      {tech:"First Principle",desc:"CFD and transport/reaction PDEs that generate the high-fidelity training fields and serve as ground truth",level:"Must"},
+      {tech:"Digital Twin",desc:"Real-time twin architecture: historian/DCS sync, online inference, reduced-order-model + operator coupling",level:"Must"},
+      {tech:"Optimization",desc:"Fast what-if scenario sweeps and set-point search enabled by the real-time surrogate",level:"Good"},
+    ],
+    background:"High-fidelity CFD and PDE-based process simulation is far too slow for real-time monitoring and control, which has kept rigorous physics out of the live digital-twin loop. Neural operators — Fourier Neural Operators and DeepONet — learn the underlying PDE solution operator rather than a single solution, so once trained they infer full field responses across operating conditions in milliseconds without continuous retraining. A 2026 framework coupling reduced-order models with neural operators demonstrated real-time thermal-hydraulic surrogates, and peer-reviewed work in Scientific Reports showed DeepONet outperforming traditional ML for real-time digital-twin inference.",
+    solution:"Train a neural-operator surrogate (FNO or DeepONet) on high-fidelity first-principle CFD/transport simulations of the target unit — reactor, heat exchanger, or column internals — so it learns the solution operator across the plant's operating envelope. Coupled with a reduced-order model and synced to historian/DCS data, the surrogate mirrors the unit in real time, delivering full temperature, composition and flow fields in milliseconds for online monitoring, what-if analysis, and set-point optimization that rigorous simulation could never support live. The physics-generated training data keeps the twin grounded and the operator formulation generalizes to new operating conditions without retraining.",
+    benefits:["Millisecond field inference vs. minutes–hours for rigorous CFD/PDE simulation","Predicts full temperature/composition/flow fields, not just point KPIs","Operator formulation generalizes across operating conditions without continuous retraining (peer-reviewed)","Makes rigorous-physics twins fast enough for online monitoring, control and optimization","Reusable surrogate framework across reactors, exchangers and separation internals"],
+    techStack:["Python","PyTorch","neuraloperator (FNO)","DeepXDE / DeepONet","Ansys Fluent / OpenFOAM (training data)","OSIsoft PI / OPC-UA"],
+    refs:[["Neural Operator-Based Surrogate Model for CFD: Helical Coil Steam Generator – arXiv, 2026","https://arxiv.org/abs/2605.30277"],["Deep Neural Operator-Driven Real-Time Inference to Enable Digital Twin Solutions – Scientific Reports (Nature), 2024","https://www.nature.com/articles/s41598-024-51984-x"],["2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing – arXiv","https://arxiv.org/abs/2605.00839"]]
   }
 ];
 
