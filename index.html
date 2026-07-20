@@ -281,9 +281,9 @@
 <div class="hero">
   <h1>SOS Project Research</h1>
   <p>First-Principle Models integrated with AI / ML / GenAI / Agentic AI for Chemical Process Manufacturing. Filter by category, technique, or week to track new research and match projects with your team's skills.</p>
-  <div style="color:#5a9fd0;font-size:11px;margin-top:10px;font-weight:600;letter-spacing:0.3px;">📅 Last Updated: 13 Jul 2026</div>
+  <div style="color:#5a9fd0;font-size:11px;margin-top:10px;font-weight:600;letter-spacing:0.3px;">📅 Last Updated: 20 Jul 2026</div>
   <div class="kpi-row">
-    <div class="kpi-card"><div class="kpi-value">27</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 10 domains</div></div>
+    <div class="kpi-card"><div class="kpi-value">29</div><div class="kpi-label">Total Projects</div><div class="kpi-sub">Across 10 domains</div></div>
     <div class="kpi-card"><div class="kpi-value">3</div><div class="kpi-label">Quick POC Wins</div><div class="kpi-sub">3–4 month delivery</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#7ecb9e;">5–30%</div><div class="kpi-label">Avg. Cost Saving</div><div class="kpi-sub">Per project category</div></div>
     <div class="kpi-card"><div class="kpi-value" style="color:#ffb74d;">$M+</div><div class="kpi-label">Proven ROI</div><div class="kpi-sub">Industry validated</div></div>
@@ -850,6 +850,40 @@ const PROJECTS = [
     benefits:["Millisecond field inference vs. minutes–hours for rigorous CFD/PDE simulation","Predicts full temperature/composition/flow fields, not just point KPIs","Operator formulation generalizes across operating conditions without continuous retraining (peer-reviewed)","Makes rigorous-physics twins fast enough for online monitoring, control and optimization","Reusable surrogate framework across reactors, exchangers and separation internals"],
     techStack:["Python","PyTorch","neuraloperator (FNO)","DeepXDE / DeepONet","Ansys Fluent / OpenFOAM (training data)","OSIsoft PI / OPC-UA"],
     refs:[["Neural Operator-Based Surrogate Model for CFD: Helical Coil Steam Generator – arXiv, 2026","https://arxiv.org/abs/2605.30277"],["Deep Neural Operator-Driven Real-Time Inference to Enable Digital Twin Solutions – Scientific Reports (Nature), 2024","https://www.nature.com/articles/s41598-024-51984-x"],["2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing – arXiv","https://arxiv.org/abs/2605.00839"]]
+  },
+  {
+    id:"28", title:"Agentic AI for Autonomous Flowsheet Simulation & Process Design",
+    dateAdded:"2026-07-20",
+    category:"R&D / Scale-Up", catKey:"R&D", complexity:"High", pocMonths:"4–6 mo.", valueImpact:"High",
+    techniques:["First Principle","GenAI / LLM","AI Agent","Optimization"],
+    teamSkills:[
+      {tech:"AI Agent",desc:"Tool-calling agent loop that drives a commercial flowsheet simulator (Aspen HYSYS / AVEVA Process Simulation) via Python/COM or MCP, reads back solver errors and iterates to convergence",level:"Must"},
+      {tech:"GenAI / LLM",desc:"LLM reasoning (Claude / GPT-class) to translate a process spec into unit-operation topology, thermodynamic-package selection and simulation code",level:"Must"},
+      {tech:"First Principle",desc:"Rigorous flowsheet models — mass/energy balance, VLE/thermodynamics, unit-operation sizing — that ground and validate every design the agent proposes",level:"Must"},
+      {tech:"Optimization",desc:"Objective-driven simulator case studies and design-variable search across recycle, energy and yield",level:"Good"},
+    ],
+    background:"Building and converging a rigorous process flowsheet in tools like Aspen HYSYS or AVEVA Process Simulation is slow, expert-dependent and eats weeks of engineering time for early concept screening and scale-up. Most GenAI pilots stop at drawing a diagram and cannot actually run rigorous physics. A 2026 wave of research changed this: LLM agents now interact directly with commercial flowsheet simulators — one arXiv framework used Claude-class models to autonomously synthesize and converge reaction/separation, pressure-swing and heteroazeotropic distillation flowsheets, and another integrated an LLM agent with AVEVA Process Simulation over Model Context Protocol.",
+    solution:"Build an agentic workflow where an LLM plans the process topology from a natural-language spec, then calls a commercial flowsheet simulator through Python/COM or MCP to place unit operations, pick thermodynamic packages, run the solver, read back convergence errors and iterate until the design meets spec. First-principle simulation stays the source of truth — the agent only proposes and checks — so every output is a physically valid, converged flowsheet. An optimization layer then runs simulator case studies to trim energy, recycle and yield, and the agent documents its assumptions and results for engineer review.",
+    benefits:["Cuts early flowsheet build and convergence from weeks to hours for concept screening and scale-up","Every design is grounded in rigorous first-principle simulation — not a hallucinated diagram","Automates thermodynamic-package selection and tedious convergence troubleshooting","Frees senior process engineers for judgement-heavy design decisions","Demonstrated in 2026 research on distillation, reaction/separation and entrainer-selection cases"],
+    techStack:["Python","Claude / GPT (tool-calling)","Aspen HYSYS / AVEVA Process Simulation","Model Context Protocol (MCP)","LangGraph","DWSIM (open-source option)"],
+    refs:[["Context is All You Need: Autonomous Process Design using Agentic AI in Flowsheet Simulations – arXiv, 2026","https://arxiv.org/abs/2603.12813"],["Sketch2Simulation: Automating Flowsheet Generation via Multi-Agent LLMs – arXiv, 2026","https://arxiv.org/pdf/2603.24629"],["LLMs in Process Systems Engineering: Architectures & Industrial Deployment – arXiv, 2026","https://arxiv.org/html/2606.11589"],["Chemical Industry to Bet on Agentic AI – C&EN, 2026","https://cen.acs.org/physical-chemistry/computational-chemistry/Chemical-industry-bet-agentic-AI/104/web/2026/01"]]
+  },
+  {
+    id:"29", title:"Federated Learning for Privacy-Preserving Cross-Plant Process Models",
+    dateAdded:"2026-07-20",
+    category:"Operations / GenAI", catKey:"Operations", complexity:"High", pocMonths:"5–7 mo.", valueImpact:"High",
+    techniques:["First Principle","Machine Learning","Deep Learning","Optimization"],
+    teamSkills:[
+      {tech:"Machine Learning",desc:"Federated learning orchestration (FedAvg / FedProx), secure aggregation, and handling of non-IID data and client drift across sites",level:"Must"},
+      {tech:"Deep Learning",desc:"Shared neural process / soft-sensor models trained locally per plant and aggregated into a global model",level:"Must"},
+      {tech:"First Principle",desc:"Hybrid gray-box structure so the federated ML layer corrects a shared first-principle backbone, keeping the global model physically consistent across sites",level:"Good"},
+      {tech:"Optimization",desc:"Cross-plant process optimization and hyperparameter tuning on the aggregated global model",level:"Good"},
+    ],
+    background:"Multi-plant operators and their customers run similar units — reactors, columns, utilities — but cannot pool raw operating data because it is proprietary and confidential, so each site trains weaker models on its own limited history. Federated learning removes this barrier: each plant trains locally and shares only model parameters through secure aggregation, so a stronger shared model emerges without any raw data leaving the site. Peer-reviewed 2026 work demonstrates this for distributed chemical process optimization, an I&EC Research tutorial formalizes the framework for chemical engineering, and the 2026 Smart-Manufacturing AI roadmap flags cyber-secure federated learning as a core enabler of autonomous plants.",
+    solution:"Deploy a federated learning framework across multiple plants (or customer sites) where each node locally trains a shared hybrid soft-sensor / process model on its own historian data and transmits only encrypted model updates to a central aggregator that returns an improved global model. A first-principle backbone keeps the shared model physically consistent while the federated ML layer captures site-to-site variation, and secure aggregation plus differential privacy protect proprietary data. The result is a stronger quality-prediction, anomaly-detection or optimization model for every site — including data-poor or newly commissioned plants — without anyone exposing raw process data.",
+    benefits:["Cross-plant model accuracy gains without sharing any proprietary raw data","Rapidly bootstraps models for data-poor or newly commissioned units","Preserves industrial confidentiality via secure aggregation and differential privacy","Enables enterprise-wide model governance and continuous improvement across sites","Directly supports the multi-site autonomous-plant roadmap (peer-reviewed 2026)"],
+    techStack:["Python","Flower / NVIDIA FLARE","PyTorch","Secure Aggregation / Differential Privacy","OSIsoft PI (per-site)","Hybrid First-Principle Models"],
+    refs:[["Privacy-Preserving Federated Learning for Distributed Chemical Process Optimization – arXiv, 2026","https://arxiv.org/abs/2604.26073"],["Federated Learning in Chemical Engineering: Privacy-Preserving Collaboration Tutorial – I&EC Research (ACS)","https://pubs.acs.org/doi/10.1021/acs.iecr.4c03805"],["2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing – arXiv","https://arxiv.org/abs/2605.00839"]]
   }
 ];
 
